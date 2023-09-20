@@ -1,26 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontend Mentor | Interactive comments section</title>
+    <link rel="icon" href="./src/images/favicon-32x32.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./src/sass/main.scss" />
+    <script type="module" defer src="./src/js/controller.js"></script>
+  </head>
+  <body>
+    <main class="main">
+      <section class="comments-section">
+        <div class="comment-votes">
+          <button class="btn">
+            <img class="comment-votes-icon" src="./src/images/icon-plus.svg" />
+          </button>
+          <span class="comment-votes-counter m-blue">12</span>
+          <button class="btn">
+            <img class="comment-votes-icon" src="./src/images/icon-minus.svg" />
+          </button>
+        </div>
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Interactive comments section</title>
+        <figure class="comment">
+          <figcaption class="comment-details">
+            <picture class="comment-details-img">
+              <source srcset="./src/images/avatars/image-amyrobson.webp" />
+              <img src="./src/images/avatars/image-amyrobson.png" alt="author photo" />
+            </picture>
+            <cite class="comment-details-author">amyrobson</cite>
+            <time class="comment-details-time" datetime="1692522812">1 month ago</time>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+            <button class="btn action-btn">
+              <img class="action-btn-icon icon" src="./src/images/icon-reply.svg" />
+              <span class="action-btn-description m-blue">reply</span>
+            </button>
+          </figcaption>
 
-  <!-- Pull dynamic content from the data.json file -->
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+          <blockquote class="comment-message" cite="amyrobson">
+            Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You&apos;ve
+            nailed the design and the responsiveness at various breakpoints works really well.
+          </blockquote>
+        </figure>
+      </section>
+    </main>
+  </body>
 </html>

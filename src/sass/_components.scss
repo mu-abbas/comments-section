@@ -1,0 +1,45 @@
+.comment {
+  @include center;
+  align-items: stretch;
+  flex-direction: column;
+  width: 61.8rem;
+
+  &-votes {
+    width: 4rem;
+    height: 10rem;
+    @include center;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    background-color: $very-light-gray;
+    border-radius: 1rem;
+  }
+
+  &-details {
+    padding-bottom: 2.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 1.6rem;
+
+    &-img {
+      width: 3.2rem;
+      @include center;
+      & img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.btn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.action-btn {
+  margin-left: auto;
+  @include center;
+  gap: 0.5rem;
+}

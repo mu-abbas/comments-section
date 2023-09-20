@@ -1,0 +1,23 @@
+html {
+  font-size: 62.5%;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  @include center;
+  align-items: start;
+  background-color: $very-light-gray;
+  min-height: 100vh;
+  min-width: 100vh;
+}
+
+img {
+  display: inline-block;
+}

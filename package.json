@@ -1,0 +1,27 @@
+{
+  "name": "fem-comments-section",
+  "version": "1.0.0",
+  "description": "This is a solution to the Interactive comments section challenge on Frontend Mentor",
+  "source": "index.html",
+  "browserslist": "> 0.2%, last 2 versions, not dead",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mu-abbas/fem-comments-section.git"
+  },
+  "author": "Muhammad Abbas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mu-abbas/fem-comments-section/issues"
+  },
+  "homepage": "https://github.com/mu-abbas/fem-comments-section#readme",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.9.3",
+    "parcel": "^2.9.3",
+    "sass": "^1.67.0"
+  }
+}

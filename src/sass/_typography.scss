@@ -1,0 +1,22 @@
+body {
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.6rem;
+  color: $grayish-Blue;
+}
+
+.comment-message {
+  font-weight: $regular;
+  line-height: 1.5;
+}
+
+.m-blue {
+  text-transform: capitalize;
+  font-weight: $medium;
+  color: $moderate-blue;
+}
+
+.comment-details-author {
+  font-style: normal;
+  font-weight: $medium;
+  color: $dark-blue;
+}
