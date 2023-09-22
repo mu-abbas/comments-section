@@ -1,14 +1,21 @@
 .main {
+  @include center;
   width: $desktop;
-  padding: 6.4rem 35.5rem;
+  padding: 6.4rem;
 }
 
-.comments-section {
+.comment-section {
+  @include center;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 73rem;
+}
+
+.comment {
   @include center;
   gap: 2.4rem;
   padding: 2.4rem;
-  align-items: center;
-  justify-content: space-evenly;
   background-color: $white;
   border-radius: 0.8rem;
+  width: 100%;
 }

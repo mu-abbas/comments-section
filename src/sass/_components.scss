@@ -1,34 +1,41 @@
-.comment {
-  @include center;
-  align-items: stretch;
-  flex-direction: column;
-  width: 61.8rem;
+.block-content {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-template-rows: min-content min-content;
+  column-gap: 1.6rem;
+  row-gap: 1.6rem;
 
-  &-votes {
-    width: 4rem;
-    height: 10rem;
+  &-img {
+    width: 3.2rem;
     @include center;
-    align-items: center;
-    justify-content: space-around;
-    flex-direction: column;
-    background-color: $very-light-gray;
-    border-radius: 1rem;
+    & img {
+      width: 100%;
+    }
   }
 
   &-details {
-    padding-bottom: 2.4rem;
-    display: flex;
-    align-items: center;
+    @include center;
     justify-content: start;
     gap: 1.6rem;
+  }
 
-    &-img {
-      width: 3.2rem;
-      @include center;
-      & img {
-        width: 100%;
-      }
-    }
+  &-message {
+    grid-column: 1 / -1;
+  }
+}
+
+.block-votes {
+  @include center;
+  width: 4rem;
+  height: 10rem;
+  justify-content: space-around;
+  flex-direction: column;
+  background-color: $very-light-gray;
+  border-radius: 1rem;
+  flex-shrink: 0;
+
+  &-icon {
+    width: 1rem;
   }
 }
 
@@ -39,7 +46,10 @@
 }
 
 .action-btn {
-  margin-left: auto;
   @include center;
   gap: 0.5rem;
+
+  &-icon {
+    width: 1.4rem;
+  }
 }

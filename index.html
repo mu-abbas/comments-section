@@ -13,37 +13,41 @@
   </head>
   <body>
     <main class="main">
-      <section class="comments-section">
-        <div class="comment-votes">
-          <button class="btn">
-            <img class="comment-votes-icon" src="./src/images/icon-plus.svg" />
-          </button>
-          <span class="comment-votes-counter m-blue">12</span>
-          <button class="btn">
-            <img class="comment-votes-icon" src="./src/images/icon-minus.svg" />
-          </button>
-        </div>
+      <section class="comment-section">
+        <article class="comment">
+          <div class="block-votes">
+            <button class="btn">
+              <img class="block-votes-icon" src="./src/images/icon-plus.svg" />
+            </button>
+            <span class="block-votes-counter m-blue">12</span>
+            <button class="btn">
+              <img class="block-votes-icon" src="./src/images/icon-minus.svg" />
+            </button>
+          </div>
 
-        <figure class="comment">
-          <figcaption class="comment-details">
-            <picture class="comment-details-img">
+          <figure class="block-content">
+            <picture class="block-content-img">
               <source srcset="./src/images/avatars/image-amyrobson.webp" />
               <img src="./src/images/avatars/image-amyrobson.png" alt="author photo" />
             </picture>
-            <cite class="comment-details-author">amyrobson</cite>
-            <time class="comment-details-time" datetime="1692522812">1 month ago</time>
 
-            <button class="btn action-btn">
-              <img class="action-btn-icon icon" src="./src/images/icon-reply.svg" />
-              <span class="action-btn-description m-blue">reply</span>
-            </button>
-          </figcaption>
+            <figcaption class="block-content-details">
+              <cite class="block-content-details-author">amyrobson</cite>
+              <time class="block-content-details-time" datetime="1692522812">1 month ago</time>
 
-          <blockquote class="comment-message" cite="amyrobson">
-            Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You&apos;ve
-            nailed the design and the responsiveness at various breakpoints works really well.
-          </blockquote>
-        </figure>
+              <button class="btn action-btn mg-left-auto">
+                <img class="action-btn-icon" src="./src/images/icon-reply.svg" />
+                <span class="action-btn-description m-blue">reply</span>
+              </button>
+            </figcaption>
+
+            <blockquote class="block-content-message" cite="amyrobson">
+              Impressive! Though it seems the drag feature could be improved. But overall it looks incredible.
+              You&apos;ve nailed the design and the responsiveness at various breakpoints works really well.
+            </blockquote>
+          </figure>
+        </article>
+        <article class="reply"></article>
       </section>
     </main>
   </body>
