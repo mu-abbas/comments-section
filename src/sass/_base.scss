@@ -10,6 +10,10 @@ html {
   box-sizing: border-box;
 }
 
+*:focus {
+  outline: solid 0.2rem $light-grayish-blue;
+}
+
 body {
   @include center;
   align-items: start;

@@ -9,14 +9,47 @@ body {
   line-height: 1.5;
 }
 
-.m-blue {
+.action-btn-description {
   text-transform: capitalize;
   font-weight: $medium;
+}
+
+.m-blue {
   color: $moderate-blue;
+}
+
+.m-red {
+  color: $soft-Red;
 }
 
 .block-content-details-author {
   font-style: normal;
   font-weight: $medium;
   color: $dark-blue;
+}
+
+.mention {
+  color: $moderate-blue;
+  font-weight: $medium;
+}
+
+.add-comment {
+  &-btn {
+    color: $white;
+    font-weight: $medium;
+    text-transform: uppercase;
+  }
+  &-text {
+    padding: 1.2rem 2.4rem;
+    color: $dark-blue;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+}
+
+.user-flag {
+  font-size: 1.2rem;
+  font-weight: $medium;
+  color: $white;
 }

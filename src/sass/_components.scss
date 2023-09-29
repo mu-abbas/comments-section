@@ -33,6 +33,7 @@
   background-color: $very-light-gray;
   border-radius: 1rem;
   flex-shrink: 0;
+  align-self: flex-start;
 
   &-icon {
     width: 1rem;
@@ -52,4 +53,28 @@
   &-icon {
     width: 1.4rem;
   }
+}
+
+.add-comment {
+  &-text {
+    height: 9.6rem;
+    border: 0.1rem solid $light-gray;
+    border-radius: 0.8rem;
+    resize: none;
+    flex-grow: 1;
+  }
+
+  &-btn {
+    width: 10.4rem;
+    height: 4.8rem;
+    flex-shrink: 0;
+    background-color: $moderate-blue;
+    border-radius: 0.8rem;
+  }
+}
+
+.user-flag {
+  background-color: $moderate-blue;
+  border-radius: 0.2rem;
+  padding: 0.2rem 0.4rem;
 }

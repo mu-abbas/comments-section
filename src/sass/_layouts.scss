@@ -2,20 +2,41 @@
   @include center;
   width: $desktop;
   padding: 6.4rem;
+  flex-direction: column;
 }
 
 .comment-section {
   @include center;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 2rem;
   width: 73rem;
+  padding: 2rem 0;
 }
 
-.comment {
+.replies {
+  @include center;
+  flex-direction: column;
+  gap: 2rem;
+  padding-left: 4.3rem;
+  margin-left: 4.3rem;
+  border-left: 0.2rem solid $light-gray;
+}
+
+.comment,
+.reply {
   @include center;
   gap: 2.4rem;
   padding: 2.4rem;
   background-color: $white;
   border-radius: 0.8rem;
-  width: 100%;
+}
+
+.add-comment {
+  @include center;
+  align-items: flex-start;
+  gap: 1.6rem;
+  width: 73rem;
+  padding: 2.4rem;
+  background-color: $white;
+  border-radius: 0.8rem;
 }
