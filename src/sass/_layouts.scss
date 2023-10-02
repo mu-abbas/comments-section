@@ -25,17 +25,21 @@
 .comment,
 .reply {
   @include center;
+  justify-content: flex-start;
   gap: 2.4rem;
   padding: 2.4rem;
   background-color: $white;
   border-radius: 0.8rem;
+  width: 100%;
+  max-width: 73rem;
 }
 
 .add-comment {
   @include center;
   align-items: flex-start;
   gap: 1.6rem;
-  width: 73rem;
+  width: 100%;
+  max-width: 73rem;
   padding: 2.4rem;
   background-color: $white;
   border-radius: 0.8rem;

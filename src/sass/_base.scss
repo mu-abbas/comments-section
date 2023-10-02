@@ -11,7 +11,11 @@ html {
 }
 
 *:focus {
-  outline: solid 0.2rem $light-grayish-blue;
+  outline: none;
+}
+
+textarea:focus {
+  outline: solid 0.1rem $moderate-blue;
 }
 
 body {
@@ -22,6 +26,7 @@ body {
   min-width: 100vh;
 }
 
-img {
+img,
+svg {
   display: inline-block;
 }

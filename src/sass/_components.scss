@@ -4,6 +4,7 @@
   grid-template-rows: min-content min-content;
   column-gap: 1.6rem;
   row-gap: 1.6rem;
+  width: 100%;
 
   &-img {
     width: 3.2rem;
@@ -19,7 +20,8 @@
     gap: 1.6rem;
   }
 
-  &-message {
+  &-message,
+  textarea {
     grid-column: 1 / -1;
   }
 }
@@ -44,6 +46,30 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
+  &,
+  & > * {
+    transition: all 0.2s;
+  }
+  &:active {
+    transform: scale(0.95);
+  }
+  &:hover {
+    & .m-blue {
+      color: $light-grayish-blue;
+      fill: $light-grayish-blue;
+    }
+    & .m-red {
+      color: $pale-red;
+      fill: $pale-red;
+    }
+    & .m-grayish {
+      color: $moderate-blue;
+      fill: $moderate-blue;
+    }
+    &.add-comment-btn {
+      background-color: $light-grayish-blue;
+    }
+  }
 }
 
 .action-btn {
