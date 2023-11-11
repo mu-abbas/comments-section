@@ -10,7 +10,7 @@ class commentFormView extends View {
           <source srcset="${this._data.currentUser.image.webp}" />
           <img src="${this._data.currentUser.image.png}" alt="author photo" />
         </picture>
-        <textarea required placeholder="Add a comment..." class="add-comment-text"></textarea>
+        <textarea required name="comment" placeholder="Add a comment..." class="add-comment-text"></textarea>
         <button class="btn add-comment-btn">Send</button>
       </form>
     `;

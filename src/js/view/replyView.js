@@ -1,14 +1,30 @@
 import { View } from './View';
 
 class replyView extends View {
-  render(data, comment) {
-    return comment.replies.length > 0
-      ? `
+  render(data, comment, commentEl) {
+    this._parentElement = commentEl;
+    const html =
+      comment.replies.length > 0
+        ? `
     <section class="replies">
         ${comment.replies.map(reply => this._renderReply(data, reply)).join('')}
     </section>
     `
-      : '';
+        : '';
+    this._insertHTML(this._parentElement, html);
+  }
+
+  replyListner(action) {
+    const form = document.querySelector('.add-reply');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const reply = Object.fromEntries([...new FormData(this)]).reply;
+      const parentSection = form.closest('.comment-section');
+      const commentId = parentSection.querySelector('.comment').dataset.commentId;
+      const replyTo = form.previousElementSibling.querySelector('cite').innerHTML;
+      action(commentId, reply, replyTo);
+      form.remove();
+    });
   }
 
   _renderReply(data, reply) {

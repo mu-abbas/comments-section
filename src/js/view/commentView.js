@@ -1,8 +1,7 @@
 import { View } from './View';
-import replyView from './replyView';
 
 class commentView extends View {
-  _parentElement = document.querySelector('.comment-section');
+  _parentElement = document.querySelector('.main');
 
   _renderMarkup() {
     return this._data.comments.map(comment => this._renderComment(comment)).join('');
@@ -10,7 +9,8 @@ class commentView extends View {
 
   _renderComment(comment) {
     return `
-    <article class="comment" data-commentId="${comment.id}">
+    <section class="comment-section">
+    <article class="comment" data-comment-id="${comment.id}">
           <div class="block-votes">
             <button class="btn" aria-label="vote-up">
               <svg class="block-votes-icon m-grayish" width="11" height="11" xmlns="http://www.w3.org/2000/svg">
@@ -69,8 +69,9 @@ class commentView extends View {
             </blockquote>
           </figure>
         </article>
+        </section>
 
-        ${replyView.render(this._data, comment)}
+        
     `;
   }
 }

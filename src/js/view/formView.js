@@ -3,15 +3,20 @@ import { View } from './View';
 class FormView extends View {
   formListener(action) {
     this._action = action;
-    document.addEventListener('click', this.formCall.bind(this));
+    document.addEventListener('click', this._formCall.bind(this));
   }
 
-  formCall(e) {
+  _formCall(e) {
     const replyBtn = e.target.closest('.reply-btn');
     if (replyBtn) {
       this._parentElement = e.target.closest('.reply');
       if (!this._parentElement) this._parentElement = e.target.closest('.comment');
-      this._action();
+      const form = this._parentElement.nextElementSibling;
+      if (form?.classList.contains('add-reply')) {
+        form.remove();
+      } else {
+        this._action();
+      }
     } else return;
   }
 
@@ -22,7 +27,7 @@ class FormView extends View {
             <source srcset="${this._data.currentUser.image.webp}" />
             <img src="${this._data.currentUser.image.png}" alt="author photo" />
           </picture>
-          <textarea required placeholder="Add a reply..." class="add-comment-text"></textarea>
+          <textarea required name="reply" placeholder="Add a reply..." class="add-comment-text"></textarea>
           <button class="btn add-comment-btn">Reply</button>
         </form>
     `;
