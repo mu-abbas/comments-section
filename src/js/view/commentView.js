@@ -10,7 +10,7 @@ class commentView extends View {
   _renderComment(comment) {
     return `
     <section class="comment-section">
-    <article class="comment" data-comment-id="${comment.id}">
+    <article class="comment" data-id="${comment.id}">
           <div class="block-votes">
             <button class="btn" aria-label="vote-up">
               <svg class="block-votes-icon m-grayish" width="11" height="11" xmlns="http://www.w3.org/2000/svg">

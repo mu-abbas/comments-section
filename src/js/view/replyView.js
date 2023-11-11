@@ -1,8 +1,8 @@
 import { View } from './View';
 
 class replyView extends View {
-  render(data, comment, commentEl) {
-    this._parentElement = commentEl;
+  render(data, comment, parent) {
+    this._parentElement = parent;
     const html =
       comment.replies.length > 0
         ? `
@@ -14,22 +14,31 @@ class replyView extends View {
     this._insertHTML(this._parentElement, html);
   }
 
+  update(data, comment, parent) {
+    this._parentElement = parent.querySelector('.replies');
+    const reply = comment.replies[comment.replies.length - 1];
+    const html = `
+      ${this._renderReply(data, reply)}
+    `;
+    this._insertHTML(this._parentElement, html);
+  }
+
   replyListner(action) {
     const form = document.querySelector('.add-reply');
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       const reply = Object.fromEntries([...new FormData(this)]).reply;
       const parentSection = form.closest('.comment-section');
-      const commentId = parentSection.querySelector('.comment').dataset.commentId;
+      const id = parentSection.querySelector('.comment').dataset.id;
       const replyTo = form.previousElementSibling.querySelector('cite').innerHTML;
-      action(commentId, reply, replyTo);
+      action(id, reply, replyTo);
       form.remove();
     });
   }
 
   _renderReply(data, reply) {
     return `
-    <article class="reply" data-replyId="${reply.id}">
+    <article class="reply" data-id="${reply.id}">
           <div class="block-votes">
             <button class="btn" aria-label="vote-up">
               <svg class="block-votes-icon m-grayish" width="11" height="11" xmlns="http://www.w3.org/2000/svg">
