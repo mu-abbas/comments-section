@@ -37,7 +37,7 @@ class commentView extends View {
 
             <figcaption class="block-content-details">
               <cite class="block-content-details-author">${comment.user.username}</cite>
-              <time class="block-content-details-time" datetime="1692522812">${comment.createdAt}</time>
+              <time class="block-content-details-time" datetime="1692522812">${this._getTime(comment.createdAt)}</time>
 
               ${
                 comment.user.username === this._data.currentUser.username

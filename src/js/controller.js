@@ -32,7 +32,7 @@ function saveNewReply(commentId, reply, replyTo) {
       comment.replies.push({
         id: model.state.lastId,
         content: reply,
-        createdAt: new Date().getTime(),
+        createdAt: Date.now(),
         score: 0,
         replyingTo: replyTo,
         user: model.state.currentUser,
@@ -40,7 +40,6 @@ function saveNewReply(commentId, reply, replyTo) {
     }
   });
 }
-
 function setLastId(state) {
   let lastId = 0;
   state.comments.forEach(comment => {

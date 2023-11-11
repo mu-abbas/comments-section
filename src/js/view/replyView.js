@@ -56,7 +56,7 @@ class replyView extends View {
 
             <figcaption class="block-content-details">
               <cite class="block-content-details-author">${reply.user.username}</cite>
-              <time class="block-content-details-time" datetime="1692522812">${reply.createdAt}</time>
+              <time class="block-content-details-time" datetime="1692522812">${this._getTime(reply.createdAt)}</time>
 
               ${
                 reply.user.username === data.currentUser.username
