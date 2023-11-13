@@ -27,23 +27,48 @@ export function saveReplyToState(id, reply, replyTo) {
   });
 }
 
+export function saveCommentToState(comment) {
+  state.lastId++;
+  state.comments.push({
+    id: state.lastId,
+    content: comment,
+    createdAt: Date.now(),
+    score: 0,
+    user: state.currentUser,
+    replies: [],
+  });
+}
+
 export function deleteFromState(id) {
   let index;
   let deleted = false;
   state.comments.forEach(comment => {
     if (comment.id === +id && comment.user.username === state.currentUser.username) {
       index = state.comments.indexOf(comment);
-      state.comments = state.comments.splice(index, 1);
-      deleted = true;
+      state.comments.splice(index, 1);
+      deleted = 'comment';
     } else {
       comment.replies.forEach(reply => {
         if (reply.id === +id && reply.user.username === state.currentUser.username) {
           index = comment.replies.indexOf(reply);
-          comment.replies = comment.replies.splice(index, 1);
-          deleted = true;
+          comment.replies.splice(index, 1);
+          comment.replies.length > 0 ? (deleted = 'reply') : (deleted = 'lastReply');
         }
       });
     }
   });
   return deleted;
+}
+
+export function setLastId() {
+  let lastId = 0;
+  state.comments.forEach(comment => {
+    if (comment.id > lastId) {
+      lastId = comment.id;
+      comment.replies.forEach(reply => {
+        if (reply.id > lastId) lastId = reply.id;
+      });
+    }
+  });
+  state.lastId = lastId;
 }

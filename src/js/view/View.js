@@ -19,7 +19,14 @@ export class View {
       let element = deleteBtn.closest('.reply');
       if (!element) element = deleteBtn.closest('.comment');
       const id = element.dataset.id;
-      if (this._action(id)) element.remove();
+      const deleted = this._action(id);
+      if (deleted === 'comment') {
+        element = element.closest('.comment-section');
+      }
+      if (deleted === 'lastReply') {
+        element = element.closest('.replies');
+      }
+      if (deleted) element.remove();
     }
   }
 

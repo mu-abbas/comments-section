@@ -3,6 +3,22 @@ import { View } from './View';
 class commentView extends View {
   _parentElement = document.querySelector('.main');
 
+  renderNewComment(comment, position) {
+    const form = document.querySelector('.add-comment');
+    const html = this._renderComment(comment);
+    this._insertHTML(form, html, position);
+  }
+
+  commentListner(action) {
+    const form = document.querySelector('.add-comment');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const comment = Object.fromEntries([...new FormData(this)]).comment;
+      form.reset();
+      action(comment);
+    });
+  }
+
   _renderMarkup() {
     return this._data.comments.map(comment => this._renderComment(comment)).join('');
   }

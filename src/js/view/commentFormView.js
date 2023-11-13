@@ -5,7 +5,7 @@ class commentFormView extends View {
 
   _renderMarkup() {
     return `
-    <form class="add-comment" action="#">
+    <form class="add-comment" name="comment" action="#">
         <picture class="block-content-img">
           <source srcset="${this._data.currentUser.image.webp}" />
           <img src="${this._data.currentUser.image.png}" alt="author photo" />

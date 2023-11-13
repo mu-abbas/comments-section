@@ -1,17 +1,18 @@
 import * as model from './model';
 import commentView from './view/commentView';
 import commentFormView from './view/commentFormView';
-import formView from './view/formView';
+import formView from './view/replyFormView';
 import replyView from './view/replyView';
 
 async function init() {
   await model.loadingData();
-  setLastId(model.state);
+  model.setLastId();
   commentView.render(model.state);
   commentFormView.render(model.state);
   renderReplies(model.state);
   formView.formListener(renderForm);
   commentView.deleteListner(model.deleteFromState);
+  commentView.commentListner(addNewComment);
 }
 
 function renderForm() {
@@ -30,17 +31,10 @@ function addNewReply(id, reply, replyTo) {
   model.saveReplyToState(id, reply, replyTo);
   renderReplyToView(id);
 }
-function setLastId(state) {
-  let lastId = 0;
-  state.comments.forEach(comment => {
-    if (comment.id > lastId) {
-      lastId = comment.id;
-      comment.replies.forEach(reply => {
-        if (reply.id > lastId) lastId = reply.id;
-      });
-    }
-  });
-  state.lastId = lastId;
+
+function addNewComment(comment) {
+  model.saveCommentToState(comment);
+  commentView.renderNewComment(model.state.comments[model.state.comments.length - 1], 'beforeBegin');
 }
 
 function renderReplyToView(id) {
