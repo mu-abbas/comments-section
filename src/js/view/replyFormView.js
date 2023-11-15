@@ -15,6 +15,7 @@ class FormView extends View {
       if (form?.classList.contains('add-reply')) {
         form.remove();
       } else {
+        document.querySelector('.add-reply')?.remove();
         this._form();
       }
     } else return;
