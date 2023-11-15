@@ -11,6 +11,7 @@
   gap: 2rem;
   width: 73rem;
   padding-bottom: 2rem;
+  animation-duration: 0.5s;
 }
 
 .replies {
@@ -30,8 +31,9 @@
   padding: 2.4rem;
   background-color: $white;
   border-radius: 0.8rem;
+  animation-name: forwardAnimate;
+  animation-duration: 0.5s;
   width: 100%;
-  max-width: 73rem;
 }
 
 .reply {
@@ -47,4 +49,6 @@
   padding: 2.4rem;
   background-color: $white;
   border-radius: 0.8rem;
+  animation-duration: 0.5s;
+  animation-name: forwardAnimate;
 }

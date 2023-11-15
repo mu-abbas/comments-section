@@ -5,8 +5,11 @@ export const state = {
 };
 
 export async function loadingData() {
-  const response = await fetch('./data.json');
-  const data = await response.json();
+  let data = getFromLocalStorage('state');
+  if (!data) {
+    const response = await fetch('./data.json');
+    data = await response.json();
+  }
   state.comments = data.comments;
   state.currentUser = data.currentUser;
 }
@@ -25,6 +28,7 @@ export function saveReplyToState(id, reply, replyTo) {
       });
     }
   });
+  saveToLocalStorage(state);
 }
 
 export function updateContentofState(id, updatedContent) {
@@ -42,6 +46,7 @@ export function updateContentofState(id, updatedContent) {
       });
     }
   });
+  saveToLocalStorage(state);
   return parent;
 }
 
@@ -55,6 +60,7 @@ export function saveCommentToState(comment) {
     user: state.currentUser,
     replies: [],
   });
+  saveToLocalStorage(state);
 }
 
 export function updateVote(id, status) {
@@ -74,6 +80,7 @@ export function updateVote(id, status) {
   });
   if (parent.score < 0) parent.score = 0;
   if (parent.score > 999) parent.score = 999;
+  saveToLocalStorage(state);
   return parent;
 }
 
@@ -95,6 +102,7 @@ export function deleteFromState(id) {
       });
     }
   });
+  saveToLocalStorage(state);
   return deleted;
 }
 
@@ -109,4 +117,12 @@ export function setLastId() {
     }
   });
   state.lastId = lastId;
+}
+
+function saveToLocalStorage(state) {
+  localStorage.setItem('state', JSON.stringify(state));
+}
+
+function getFromLocalStorage(state) {
+  return JSON.parse(localStorage.getItem(state));
 }
