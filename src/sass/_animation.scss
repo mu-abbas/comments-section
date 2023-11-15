@@ -6,3 +6,30 @@
     transform: scale(100%);
   }
 }
+
+@keyframes reverseAnimate {
+  0% {
+    transform: scale(100%);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes increaseOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+@keyframes decreaseOpacity {
+  0% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0%;
+  }
+}

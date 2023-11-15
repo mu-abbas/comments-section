@@ -98,15 +98,42 @@ export class View {
     if (deleteBtn) {
       let element = deleteBtn.closest('.reply');
       if (!element) element = deleteBtn.closest('.comment');
-      const id = element.dataset.id;
-      const deleted = this._delete(id);
-      if (deleted === 'comment') {
-        element = element.closest('.comment-section');
+      const gaurdHTML = `
+      <div class="delete-guard-class">
+      <div class="message-block">
+        <h3>Delete comment</h3>
+        <p>Are you sure you want to delete this comment? This will remove the comment and can’t be undone.</p>
+        <div class="delete-btns">
+          <button class="btn delete-status reject-delete">NO, CANCEL</button>
+          <button class="btn delete-status approve-delete">YES, DELETE</button>
+        </div>
+      </div>
+    </div>
+      `;
+      this._insertHTML(document.querySelector('main'), gaurdHTML);
+      document.addEventListener('click', deleteStatus.bind(this));
+
+      function deleteStatus(e) {
+        const btn = e.target.closest('.delete-status');
+        if (btn?.classList.contains('approve-delete')) {
+          const id = element.dataset.id;
+          const deleted = this._delete(id);
+          if (deleted === 'comment') {
+            element = element.closest('.comment-section');
+          }
+          if (deleted === 'lastReply') {
+            element = element.closest('.replies');
+          }
+          if (deleted) element.remove();
+        }
+        if (btn) {
+          btn.closest('.message-block').style.animationName = 'reverseAnimate';
+          btn.closest('.delete-guard-class').style.animationName = 'decreaseOpacity';
+          setTimeout(function () {
+            btn.closest('.delete-guard-class').remove();
+          }, 500);
+        }
       }
-      if (deleted === 'lastReply') {
-        element = element.closest('.replies');
-      }
-      if (deleted) element.remove();
     }
   }
 
