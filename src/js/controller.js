@@ -13,6 +13,17 @@ async function init() {
   formView.formListener(renderForm);
   commentView.deleteListner(model.deleteFromState);
   commentView.commentListner(addNewComment);
+  commentView.editListner(updateContentListner);
+}
+
+function updateContentListner() {
+  commentView.updateListner(updateContent);
+}
+
+function updateContent(id, updateContent) {
+  const parentEl = document.querySelector(`[data-id="${id}"]`);
+  const parent = model.updateContentofState(id, updateContent);
+  commentView.renderUpdatedContent(model.state, parent, parentEl);
 }
 
 function renderForm() {

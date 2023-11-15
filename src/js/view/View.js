@@ -8,6 +8,61 @@ export class View {
     this._insertHTML(this._parentElement, html, position);
   }
 
+  editListner(action) {
+    this._action = action;
+    document.addEventListener('click', this._editForm.bind(this));
+  }
+
+  voteListner(action) {
+    this._action = action;
+    document.addEventListener('click', this._voting.bind(this));
+  }
+
+  // _voting(e) {
+  //   const btn = e.target.closest('')
+  // }
+
+  updateListner(action) {
+    const form = document.querySelector('.update-content');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const updatedContent = Object.fromEntries([...new FormData(form)]).content;
+      let parent = form.closest('.reply');
+      if (!parent) parent = form.closest('.comment');
+      const id = parent.dataset.id;
+      form.remove();
+      action(id, updatedContent);
+    });
+  }
+
+  renderUpdatedContent(data, parent, parentEl) {
+    const html = `
+    <blockquote class="block-content-message" cite="${data.currentUser.userName}">
+      ${parent.replyingTo ? `<span class="mention">@${parent.replyingTo}</span>` : ``} ${parent.content}
+    </blockquote>
+    `;
+    this._insertHTML(parentEl.querySelector('figure'), html);
+  }
+
+  _editForm(e) {
+    const editBtn = e.target.closest('.edit-btn');
+    if (editBtn) {
+      let parent = editBtn.closest('.reply');
+      if (!parent) parent = editBtn.closest('.comment');
+      const messageElement = parent.querySelector('.block-content-message');
+      const messageText = messageElement.querySelector('.content').innerText;
+      messageElement.remove();
+      const html = `
+      <form class="update-content" action="#">
+        <textarea name="content" required placeholder="Update the content..." class="update-content-text">${messageText}</textarea>
+        <button class="btn update-content-btn">Update</button>
+      </form>
+      `;
+      this._insertHTML(parent.querySelector('figure'), html);
+      this._action();
+    }
+  }
+
   deleteListner(action) {
     this._action = action;
     document.addEventListener('click', this._delete.bind(this));

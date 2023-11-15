@@ -27,6 +27,24 @@ export function saveReplyToState(id, reply, replyTo) {
   });
 }
 
+export function updateContentofState(id, updatedContent) {
+  let parent;
+  state.comments.forEach(comment => {
+    if (comment.id === +id && comment.user.username === state.currentUser.username) {
+      comment.content = updatedContent;
+      parent = comment;
+    } else {
+      comment.replies.forEach(reply => {
+        if (reply.id === +id && reply.user.username === state.currentUser.username) {
+          reply.content = updatedContent;
+          parent = reply;
+        }
+      });
+    }
+  });
+  return parent;
+}
+
 export function saveCommentToState(comment) {
   state.lastId++;
   state.comments.push({

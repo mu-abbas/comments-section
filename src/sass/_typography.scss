@@ -49,3 +49,9 @@ body {
   font-weight: $medium;
   color: $white;
 }
+
+.update-content {
+  &-btn {
+    color: $white;
+  }
+}
