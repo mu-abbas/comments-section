@@ -14,10 +14,16 @@ async function init() {
   commentView.deleteListner(model.deleteFromState);
   commentView.commentListner(addNewComment);
   commentView.editListner(updateContentListner);
+  commentView.voteListner(updateVote);
 }
 
 function updateContentListner() {
   commentView.updateListner(updateContent);
+}
+
+function updateVote(id, status) {
+  const parent = model.updateVote(id, status);
+  if (parent) commentView.renderNewVote(parent);
 }
 
 function updateContent(id, updateContent) {

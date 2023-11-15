@@ -1,6 +1,9 @@
 export class View {
   _data;
-  _action;
+  _form;
+  _vote;
+  _delete;
+  _update;
 
   render(data, position) {
     if (data) this._data = data;
@@ -8,19 +11,44 @@ export class View {
     this._insertHTML(this._parentElement, html, position);
   }
 
+  deleteListner(action) {
+    this._delete = action;
+    document.addEventListener('click', this._deleteContent.bind(this));
+  }
+
   editListner(action) {
-    this._action = action;
+    this._update = action;
     document.addEventListener('click', this._editForm.bind(this));
   }
 
   voteListner(action) {
-    this._action = action;
+    this._vote = action;
     document.addEventListener('click', this._voting.bind(this));
   }
 
-  // _voting(e) {
-  //   const btn = e.target.closest('')
-  // }
+  renderNewVote(data) {
+    const parentEl = document.querySelector(`[data-id="${data.id}"]`);
+    const votes = data.score;
+    parentEl.querySelector('.block-votes-counter').innerText = votes;
+    if (parentEl.classList.contains('comment')) {
+      parentEl.closest('.comment-section').style.order = 999 - votes;
+    }
+  }
+
+  _voting(e) {
+    const btn = e.target.closest('.vote');
+    let id, status;
+    if (btn) {
+      id = btn.closest('.reply')?.dataset.id;
+      if (!id) id = btn.closest('.comment')?.dataset.id;
+      if (btn.classList.contains('vote-up')) {
+        status = 'up';
+      } else {
+        status = 'down';
+      }
+      this._vote(id, status);
+    }
+  }
 
   updateListner(action) {
     const form = document.querySelector('.update-content');
@@ -38,7 +66,9 @@ export class View {
   renderUpdatedContent(data, parent, parentEl) {
     const html = `
     <blockquote class="block-content-message" cite="${data.currentUser.userName}">
-      ${parent.replyingTo ? `<span class="mention">@${parent.replyingTo}</span>` : ``} ${parent.content}
+      ${parent.replyingTo ? `<span class="mention">@${parent.replyingTo}</span>` : ``} <span class="content">${
+      parent.content
+    }</span>
     </blockquote>
     `;
     this._insertHTML(parentEl.querySelector('figure'), html);
@@ -59,22 +89,17 @@ export class View {
       </form>
       `;
       this._insertHTML(parent.querySelector('figure'), html);
-      this._action();
+      this._update();
     }
   }
 
-  deleteListner(action) {
-    this._action = action;
-    document.addEventListener('click', this._delete.bind(this));
-  }
-
-  _delete(e) {
+  _deleteContent(e) {
     const deleteBtn = e.target.closest('.delete-btn');
     if (deleteBtn) {
       let element = deleteBtn.closest('.reply');
       if (!element) element = deleteBtn.closest('.comment');
       const id = element.dataset.id;
-      const deleted = this._action(id);
+      const deleted = this._delete(id);
       if (deleted === 'comment') {
         element = element.closest('.comment-section');
       }

@@ -57,6 +57,26 @@ export function saveCommentToState(comment) {
   });
 }
 
+export function updateVote(id, status) {
+  let parent;
+  state.comments.forEach(comment => {
+    if (comment.id === +id) {
+      status === 'up' ? comment.score++ : comment.score--;
+      parent = comment;
+    } else {
+      comment.replies.forEach(reply => {
+        if (reply.id === +id) {
+          status === 'up' ? reply.score++ : reply.score--;
+          parent = reply;
+        }
+      });
+    }
+  });
+  if (parent.score < 0) parent.score = 0;
+  if (parent.score > 999) parent.score = 999;
+  return parent;
+}
+
 export function deleteFromState(id) {
   let index;
   let deleted = false;

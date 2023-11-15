@@ -2,7 +2,7 @@ import { View } from './View';
 
 class FormView extends View {
   formListener(action) {
-    this._action = action;
+    this._form = action;
     document.addEventListener('click', this._formCall.bind(this));
   }
 
@@ -15,7 +15,7 @@ class FormView extends View {
       if (form?.classList.contains('add-reply')) {
         form.remove();
       } else {
-        this._action();
+        this._form();
       }
     } else return;
   }
