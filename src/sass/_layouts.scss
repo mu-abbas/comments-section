@@ -1,26 +1,47 @@
 .main {
   @include center;
-  width: $desktop;
   padding: 6.4rem 1rem;
   flex-direction: column;
+  @media only screen and (max-width: 43.75em) {
+    padding: 2rem 1rem;
+  }
 }
 
 .comment-section {
   @include center;
   flex-direction: column;
   gap: 2rem;
-  width: 73rem;
+  width: min(73rem, 95vw);
   padding-bottom: 2rem;
   animation-duration: 0.5s;
 }
 
 .replies {
-  @include center;
-  flex-direction: column;
-  gap: 2rem;
-  padding-left: 4.3rem;
-  margin-left: 4.3rem;
-  border-left: 0.2rem solid $light-gray;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+
+  &-pseudo-border {
+    width: 4.1rem;
+    border-right: 0.2rem solid $light-gray;
+    flex-shrink: 0;
+
+    @media only screen and (max-width: 43.75em) {
+      width: 3.6vw;
+    }
+  }
+
+  &-container {
+    @include center;
+    padding-left: 4.3rem;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+
+    @media only screen and (max-width: 43.75em) {
+      padding-left: 4vw;
+    }
+  }
 }
 
 .comment,
@@ -34,21 +55,29 @@
   animation-name: forwardAnimate;
   animation-duration: 0.5s;
   width: 100%;
-}
-
-.reply {
-  min-width: 64rem;
+  @media only screen and (max-width: 43.75em) {
+    flex-direction: column;
+  }
 }
 
 .add-comment {
   @include center;
   align-items: flex-start;
   gap: 1.6rem;
-  width: 100%;
-  max-width: 73rem;
+  width: min(73rem, 95vw);
   padding: 2.4rem;
   background-color: $white;
   border-radius: 0.8rem;
   animation-duration: 0.5s;
   animation-name: forwardAnimate;
+
+  @media only screen and (max-width: 43.75em) {
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}
+
+.add-reply {
+  width: 100%;
 }

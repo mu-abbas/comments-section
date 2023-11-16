@@ -8,6 +8,7 @@
 
   &-img {
     width: 3.2rem;
+    flex-shrink: 0;
     @include center;
     & img {
       width: 100%;
@@ -26,6 +27,17 @@
   }
 }
 
+.block-votes-container {
+  align-self: flex-start;
+  @media only screen and (max-width: 43.75em) {
+    @include center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    order: 1;
+  }
+}
+
 .block-votes {
   @include center;
   width: 4rem;
@@ -35,7 +47,12 @@
   background-color: $very-light-gray;
   border-radius: 1rem;
   flex-shrink: 0;
-  align-self: flex-start;
+
+  @media only screen and (max-width: 43.75em) {
+    flex-direction: row;
+    width: 10rem;
+    height: 4rem;
+  }
 
   &-icon {
     width: 1rem;
@@ -70,6 +87,36 @@
     &.update-btn {
       background-color: $light-grayish-blue;
     }
+  }
+}
+
+.mobile-version {
+  display: none;
+  opacity: 0;
+  transform: scale(0);
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  @media only screen and (max-width: 43.75em) {
+    display: unset;
+    opacity: 1;
+    transform: scale(100%);
+    position: static;
+  }
+}
+
+.desktop-version {
+  opacity: 1;
+  display: unset;
+
+  @media only screen and (max-width: 43.75em) {
+    display: none;
+    opacity: 0;
+    transform: scale(0);
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 }
 
