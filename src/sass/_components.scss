@@ -70,22 +70,25 @@
   &:active {
     transform: scale(0.95);
   }
-  &:hover {
-    & .m-blue {
-      color: $light-grayish-blue;
-      fill: $light-grayish-blue;
-    }
-    & .m-red {
-      color: $pale-red;
-      fill: $pale-red;
-    }
-    & .m-grayish {
-      color: $moderate-blue;
-      fill: $moderate-blue;
-    }
-    &.add-comment-btn,
-    &.update-btn {
-      background-color: $light-grayish-blue;
+
+  @media (hover: hover) {
+    &:hover {
+      & .m-blue {
+        color: $light-grayish-blue;
+        fill: $light-grayish-blue;
+      }
+      & .m-red {
+        color: $pale-red;
+        fill: $pale-red;
+      }
+      & .m-grayish {
+        color: $moderate-blue;
+        fill: $moderate-blue;
+      }
+      &.add-comment-btn,
+      &.update-btn {
+        background-color: $light-grayish-blue;
+      }
     }
   }
 }
