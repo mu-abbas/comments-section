@@ -26,29 +26,36 @@ Users are able to:
 
 ### Screenshots
 
-![](./screenshot.jpg)
+<p align="center">
+  <img src="https://res.cloudinary.com/dx2mn0ic0/image/upload/v1700214174/FEM%20-%20Comment%20Section/Design/desktop-preview_qvvwfy.jpg" alt="Desktop Design"/>
+</p>
+
+<p align="center">
+  <img src="https://res.cloudinary.com/dx2mn0ic0/image/upload/v1700214174/FEM%20-%20Comment%20Section/Design/active-states_kedsz7.jpg" alt="Desktop Design Active"/>
+</p>
+
+<p align="center">
+  <img src="https://res.cloudinary.com/dx2mn0ic0/image/upload/v1700214174/FEM%20-%20Comment%20Section/Design/desktop-modal_zvdgeg.jpg" alt="Desktop Design Active"/>
+</p>
+
+<p align="center">
+  <img src="https://res.cloudinary.com/dx2mn0ic0/image/upload/v1700214174/FEM%20-%20Comment%20Section/Design/mobile-design_kk0q8p.jpg" alt="Mobile Design"/>
+</p>
+
+<p align="center">
+  <img src="https://res.cloudinary.com/dx2mn0ic0/image/upload/v1700214174/FEM%20-%20Comment%20Section/Design/mobile-modal_eraray.jpg" alt="Mobile Design Active"/>
+</p>
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
-
-## My process
-
-### Building steps
-
-- Initiate the project and start creating main files.
-- Figure out the figma file.
-- Extract main colors and fonts and create `Sass` variables.
-- Start building my markup structure.
-- Start styling the components using `Sass`.
+- Solution URL: [Frontend Mentor Solution](https://www.frontendmentor.io/solutions/interactive-comments-section-iALeB4NcJu)
+- Live Site URL: [Live demo](https://fem-comment-section.netlify.app/)
 
 ### Built with
 
 - HTML
 - Sass
-- Vanilla Javascript
-- Desktop-first workflow
+- Javascript
 
 ## Author
 
