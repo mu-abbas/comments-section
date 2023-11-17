@@ -8,7 +8,6 @@ This is a solution to the [Interactive comments section challenge on Frontend Me
   - [The challenge](#the-challenge)
   - [Screenshot](#screenshot)
   - [Links](#links)
-- [My process](#my-process)
   - [Built with](#built-with)
 - [Author](#author)
 
@@ -21,7 +20,7 @@ Users are able to:
 - View the optimal layout for the app depending on their device's screen size.
 - Create, Read, Update, and Delete comments and replies.
 - Upvote and downvote comments.
-- The current state is saved in the browser using `localStorage` so that it persists when the browser is refreshed.
+- The current state is saved in the browser using `localStorage`.
 - Time is dynamically tracked using `timeStamps` since the comment or reply was posted.
 
 ### Screenshots
