@@ -193,7 +193,7 @@
     flex-direction: column;
     gap: 2rem;
     background-color: $white;
-    width: 40rem;
+    width: min(40rem, 95vw);
     height: 25rem;
     padding: 3.2rem;
     border-radius: 0.8rem;

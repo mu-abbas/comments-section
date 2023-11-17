@@ -7,7 +7,9 @@ export const state = {
 export async function loadingData() {
   let data = getFromLocalStorage('state');
   if (!data) {
-    const response = await fetch('./data.json');
+    const response = await fetch(
+      'https://res.cloudinary.com/dx2mn0ic0/raw/upload/v1700181705/FEM%20-%20Comment%20Section/data_jwxssf.json'
+    );
     data = await response.json();
   }
   state.comments = data.comments;
